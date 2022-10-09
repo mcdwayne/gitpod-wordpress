@@ -8,7 +8,7 @@ ENV PHP_VERSION="7.4"
 ENV APACHE_DOCROOT="public_html"
 
 ### Setups, Node, NPM ###
-USER gitpod
+USER root
 ADD https://api.wordpress.org/secret-key/1.1/salt?rnd=152634 /dev/null
 RUN git clone https://github.com/luizbills/gitpod-wordpress $HOME/gitpod-wordpress && \
     cat $HOME/gitpod-wordpress/conf/.bashrc.sh >> $HOME/.bashrc && \
@@ -64,4 +64,4 @@ RUN go get github.com/mailhog/MailHog && \
     mv $HOME/wp-cli.phar /usr/local/bin/wp && \
     chown gitpod:gitpod /usr/local/bin/wp
 
-USER gitpod
+USER root
